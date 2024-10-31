@@ -55,7 +55,7 @@ class Program
 
             while (true)
             {
-                "Explain the program (html, js) app you want the dev team to make:".Write(ConsoleColor.White, false);
+                "You: ".Write(ConsoleColor.White, false);
 
                 AgentGroupChat chat = new (programManagerAgent, softwareEngineerAgent, productOwnerAgent)
                 {
@@ -98,18 +98,20 @@ class Program
     private static async Task ProcessChatAsync(AgentGroupChat chat)
     {
         bool appCreated = false;
-        await foreach (var content in chat.InvokeAsync())
+        string completeString = string.Empty; // Initialize completeString
+        await foreach (var content in chat.InvokeStreamingAsync())
         {
+            completeString += content.Content ?? string.Empty; // Append content to completeString
             if (content.Content != null && content.Content.TryExtractHtmlContent(out var croppedHtml))
             {
-                $"#{content.AuthorName ?? "*"}: '{croppedHtml}'".Write(ConsoleColor.Green);
-                croppedHtml.OpenHtmlInBrowser();
+                $"{content.AuthorName ?? "*"}: '{croppedHtml}'".Write(ConsoleColor.Green, false);
+                croppedHtml?.OpenHtmlInBrowser(); // Fix for CS8604
                 appCreated = true;
                 break;
             }
             else
             {
-                $"#{content.AuthorName ?? "*"}: '{content.Content}'".Write(ConsoleColor.Green);
+                $"{content.Content}".Write(ConsoleColor.Blue, false);
             }
         }
 
@@ -122,5 +124,5 @@ class Program
 sealed class ApprovalTerminationStrategy : TerminationStrategy
 {
     protected override Task<bool> ShouldAgentTerminateAsync(Agent agent, IReadOnlyList<ChatMessageContent> history, CancellationToken cancellationToken)
-        => Task.FromResult(history.Last().Content?.Contains("PRODUCT-DONE", StringComparison.OrdinalIgnoreCase) ?? false);
+        => Task.FromResult(history.Last().Content?.Contains("approve", StringComparison.OrdinalIgnoreCase) ?? false);
 }
