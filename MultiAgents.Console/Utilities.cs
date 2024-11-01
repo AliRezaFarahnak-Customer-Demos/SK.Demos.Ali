@@ -6,7 +6,7 @@ namespace MultiAgents;
 
 public static class Utilities
 {
-    public static void Write(this string message, ConsoleColor color, bool writeLine = true)
+    public static void Write(this string message, ConsoleColor color, bool writeLine = false)
     {
         var previousColor = Console.ForegroundColor;
         Console.ForegroundColor = color;

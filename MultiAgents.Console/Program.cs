@@ -51,11 +51,11 @@ class Program
             var programManagerAgent = CreateAgent(nameof(ProgramManager), ProgramManager);
             var productOwnerAgent = CreateAgent(nameof(ProductOwner), ProductOwner);
 
-            @$"Welcome to MultiAgents".Write(ConsoleColor.Yellow);
+            @$"Welcome to MultiAgents".Write(ConsoleColor.Yellow, true);
 
             while (true)
             {
-                "You: ".Write(ConsoleColor.White, false);
+                "You: ".Write(ConsoleColor.White);
 
                 AgentGroupChat chat = new (programManagerAgent, softwareEngineerAgent, productOwnerAgent)
                 {
@@ -104,14 +104,14 @@ class Program
             completeString += content.Content ?? string.Empty; 
             if (content.Content != null && completeString.TryExtractHtmlContent(out var croppedHtml))
             {
-                $"{content.AuthorName ?? "*"}: '{croppedHtml}'".Write(ConsoleColor.Green, false);
+                $"{content.AuthorName ?? "*"}: '{croppedHtml}'".Write(ConsoleColor.Green, true);
                 croppedHtml?.OpenHtmlInBrowser(); 
                 appCreated = true;
                 break;
             }
             else
             {
-                $"{content.Content}".Write(ConsoleColor.Blue, false);
+                $"{content.Content}".Write(ConsoleColor.Blue);
             }
         }
 
