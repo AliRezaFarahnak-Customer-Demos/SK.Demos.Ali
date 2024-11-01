@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Agents;
-using Microsoft.SemanticKernel.Agents.Chat;
 using Microsoft.SemanticKernel.ChatCompletion;
 
 namespace MultiAgents;
@@ -9,24 +8,8 @@ namespace MultiAgents;
 #pragma warning disable SKEXP0110, SKEXP0001, SKEXP0101
 class Program
 {
-    private const string ProgramManager = @"  
-            You are a Program Manager responsible for gathering detailed requirements from the user  
-            and creating a comprehensive plan for app development. You will document the user  
-            requirements and provide cost estimates. Ensure you extract all necessary requirements  
-            from the user.  
-        ";
+    private const string System = @"You are an AI.";
 
-    private const string SoftwareEngineer = @"  
-            You are a Software Engineer tasked with developing a web app using HTML and JavaScript (JS).  
-            You must adhere to all the requirements specified by the Program Manager. Your output  
-            should consist of a single file containing the complete HTML and JS code that satisfies the requirements from the program manager.  
-        ";
-
-    private const string ProductOwner = @"  
-            You are a Product Owner responsible for ensuring that the Software Engineer's code meets all client requirements.  
-            Your role involves reviewing the code thoroughly to verify that it aligns with the specified requirements.  
-            Once you are satisfied that all requirements are met, you can approve the request by simply responding with 'IAPPROVE'.  
-        ";
 
     private static readonly IConfiguration _cfg = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
@@ -35,6 +18,7 @@ class Program
         .Build();
 
     private static Kernel _kernel = null!;
+    private static ChatHistory _session;
 
     static async Task Main(string[] args)
     {
@@ -46,28 +30,15 @@ class Program
                                                               _cfg["ApiKey"]);
 
             _kernel = builder.Build();
-           
-            var softwareEngineerAgent = CreateAgent(nameof(SoftwareEngineer), SoftwareEngineer);
-            var programManagerAgent = CreateAgent(nameof(ProgramManager), ProgramManager);
-            var productOwnerAgent = CreateAgent(nameof(ProductOwner), ProductOwner);
+            _session = new ChatHistory();
 
-            @$"Welcome to MultiAgents".Write(ConsoleColor.Yellow, true);
+            @$"Welcome to SingleAgents".Write(ConsoleColor.Yellow, true);
 
             while (true)
             {
                 "You: ".Write(ConsoleColor.White);
 
-                AgentGroupChat chat = new (programManagerAgent, softwareEngineerAgent, productOwnerAgent)
-                {
-                    ExecutionSettings = new()
-                    {
-                        TerminationStrategy = new ApprovalTerminationStrategy
-                        {
-                            Agents = new List<ChatCompletionAgent> { productOwnerAgent },
-                            MaximumIterations = 15,
-                        }
-                    }
-                };
+                var chat = _kernel.GetRequiredService<IChatCompletionService>();
 
                 var userInput = Console.ReadLine();
                 if (string.IsNullOrEmpty(userInput) || userInput.ToLower() == "exit")
@@ -75,7 +46,8 @@ class Program
                     break;
                 }
 
-                chat.AddChatMessage(new ChatMessageContent(AuthorRole.User, userInput));
+                _session.AddUserMessage(userInput);
+                
                 await ProcessChatAsync(chat);
             }
         }
@@ -95,34 +67,14 @@ class Program
         };
 
 
-    private static async Task ProcessChatAsync(AgentGroupChat chat)
+    private static async Task ProcessChatAsync(IChatCompletionService chat)
     {
-        bool appCreated = false;
-        string completeString = string.Empty; 
-        await foreach (var content in chat.InvokeStreamingAsync())
+        await foreach (var content in chat.GetStreamingChatMessageContentsAsync(_session))
         {
-            completeString += content.Content ?? string.Empty; 
-            if (content.Content != null && completeString.TryExtractHtmlContent(out var croppedHtml))
-            {
-                $"{content.AuthorName ?? "*"}: '{croppedHtml}'".Write(ConsoleColor.Green, true);
-                croppedHtml?.OpenHtmlInBrowser(); 
-                appCreated = true;
-                break;
-            }
-            else
-            {
-                $"{content.Content}".Write(ConsoleColor.Blue);
-            }
+            $"{content.Content}".Write(ConsoleColor.Green);
         }
-
-        if (appCreated)
-            return;
+        Console.WriteLine("\n");
+        
     }
-
 }
 
-sealed class ApprovalTerminationStrategy : TerminationStrategy
-{
-    protected override Task<bool> ShouldAgentTerminateAsync(Agent agent, IReadOnlyList<ChatMessageContent> history, CancellationToken cancellationToken)
-        => Task.FromResult(history.Last().Content?.Contains("approve", StringComparison.OrdinalIgnoreCase) ?? false);
-}

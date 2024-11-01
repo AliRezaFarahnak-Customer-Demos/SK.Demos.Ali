@@ -23,14 +23,14 @@
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.11.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
-		<PackageReference Include="Microsoft.SemanticKernel" Version="1.25.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
+		<PackageReference Include="Microsoft.SemanticKernel" Version="1.26.0" />
 		<PackageReference Include="Microsoft.SemanticKernel.Agents.Abstractions" Version="1.25.0-alpha" />
 		<PackageReference Include="Microsoft.SemanticKernel.Agents.Core" Version="1.25.0-alpha" />
 		<PackageReference Include="Microsoft.SemanticKernel.Agents.OpenAI" Version="1.25.0-alpha" />
-		<PackageReference Include="Microsoft.SemanticKernel.Connectors.OpenAI" Version="1.25.0" />
+		<PackageReference Include="Microsoft.SemanticKernel.Connectors.OpenAI" Version="1.26.0" />
 		<PackageReference Include="Microsoft.SemanticKernel.Experimental.Agents" Version="1.18.2-alpha" />
-		<PackageReference Include="System.Linq.Dynamic.Core" Version="1.4.7" />
+		<PackageReference Include="System.Linq.Dynamic.Core" Version="1.4.8" />
 	</ItemGroup>
 
 </Project>
