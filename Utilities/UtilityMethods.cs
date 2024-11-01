@@ -2,9 +2,9 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace MultiAgents;
+namespace Utilities;
 
-public static class Utilities
+public static class UtilityMethods
 {
     public static void Write(this string message, ConsoleColor color, bool writeLine = false)
     {

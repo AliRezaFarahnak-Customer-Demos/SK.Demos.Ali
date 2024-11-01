@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /MultiAgents.Console/appsettings.json
 /SingleAgent/appsettings.json
+/MultiAgents/appsettings.json

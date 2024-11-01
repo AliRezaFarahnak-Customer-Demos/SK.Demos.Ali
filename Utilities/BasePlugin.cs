@@ -1,4 +1,4 @@
-﻿namespace SingleAgent.Console.Plugin;
+﻿namespace Utilities;
 
 public class BasePlugin
 {

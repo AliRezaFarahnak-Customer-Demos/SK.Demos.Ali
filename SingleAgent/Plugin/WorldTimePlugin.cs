@@ -1,4 +1,5 @@
-﻿namespace SingleAgent.Console.Plugin;
+﻿
+namespace SingleAgent.Plugin;
 
 public class WorldTimePlugin
 {
