@@ -44,24 +44,36 @@ class Program
             _kernel = builder.Build();
             _kernel.ImportPluginFromType<WorldTimePlugin>();
             _kernel.ImportPluginFromType<WorldWeatherPlugin>();
+            _kernel.ImportPluginFromType<OpenSkyPlugin>();
 
             _session = new ChatHistory();
 
             @$"Welcome to SingleAgent".Write(ConsoleColor.Yellow, true);
             var chat = _kernel.GetRequiredService<IChatCompletionService>();
+            var completeResponse = string.Empty;
 
             while (true)
             {
                 "You: ".Write(ConsoleColor.White);
                 var userInput = Console.ReadLine();
 
+                if(userInput == "clear")
+                {
+                   _session.Clear();
+                    "Session cleared".Write(ConsoleColor.Red, true);
+                    Console.WriteLine();
+                    continue;
+                }
+
                 _session.AddUserMessage(userInput);
                 await foreach (var content in chat.GetStreamingChatMessageContentsAsync(_session, _executionSettings, _kernel))
                 {
                     $"{content.Content}".Write(ConsoleColor.Green);
+                    completeResponse += content.Content;
                 }
-                Console.WriteLine("\n");
-
+                _session.AddAssistantMessage(completeResponse);
+                _session.ScopeSession();
+                Console.WriteLine();
             }
 
         }
