@@ -98,14 +98,14 @@ class Program
     private static async Task ProcessChatAsync(AgentGroupChat chat)
     {
         bool appCreated = false;
-        string completeString = string.Empty; // Initialize completeString
+        string completeString = string.Empty; 
         await foreach (var content in chat.InvokeStreamingAsync())
         {
-            completeString += content.Content ?? string.Empty; // Append content to completeString
+            completeString += content.Content ?? string.Empty; 
             if (content.Content != null && completeString.TryExtractHtmlContent(out var croppedHtml))
             {
                 $"{content.AuthorName ?? "*"}: '{croppedHtml}'".Write(ConsoleColor.Green, false);
-                croppedHtml?.OpenHtmlInBrowser(); // Fix for CS8604
+                croppedHtml?.OpenHtmlInBrowser(); 
                 appCreated = true;
                 break;
             }
