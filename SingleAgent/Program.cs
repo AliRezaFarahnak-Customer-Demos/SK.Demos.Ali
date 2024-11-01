@@ -62,6 +62,9 @@ class Program
                    _session.Clear();
                     "Session cleared".Write(ConsoleColor.Red, true);
                     Console.WriteLine();
+                    Task.Delay(500).Wait();
+                    Console.Clear();
+                    @$"Welcome to SingleAgent".Write(ConsoleColor.Yellow, true);
                     continue;
                 }
 
