@@ -11,8 +11,6 @@ public class WorldWeatherPlugin : BasePlugin
     {
         string url = $"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode&timezone=auto";
         string weatherJson = await httpClient.GetStringAsync(url);
-        var currentUtcTime = $@"This is time UTC: {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")}, Now calculate time for the location";
-        weatherJson = $"Current UTC time: {currentUtcTime}\n{weatherJson}";
         return weatherJson;
     }
 
