@@ -102,7 +102,7 @@ class Program
         await foreach (var content in chat.InvokeStreamingAsync())
         {
             completeString += content.Content ?? string.Empty; // Append content to completeString
-            if (content.Content != null && content.Content.TryExtractHtmlContent(out var croppedHtml))
+            if (content.Content != null && completeString.TryExtractHtmlContent(out var croppedHtml))
             {
                 $"{content.AuthorName ?? "*"}: '{croppedHtml}'".Write(ConsoleColor.Green, false);
                 croppedHtml?.OpenHtmlInBrowser(); // Fix for CS8604
