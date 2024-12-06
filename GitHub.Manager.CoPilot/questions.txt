@@ -1,0 +1,16 @@
+What is the name of the enterprise?
+How many orgs do I have?
+Give me their names?
+List the users in each?
+How many copilot seats does each have assigned?
+Which tier does alfarahn have?
+How many tiers is possible?
+List all repos in customer demos?
+Is there any issues in AI automation?
+Open a new issue with title "Awesome AI" and body should be a funny story about GitHub Copilot implemented by Aliens.
+Comment the issue "thank you Ali".
+Close all the issues.
+List all the workflows in AI automation.
+Which user triggered the last build?
+Was it successful?
+Trigger a new build.

@@ -1,0 +1,3 @@
+﻿Create a beautiful to-do list app with Material Design, easy task management, priority labels, and a dynamic EChart.
+Design a weather app with large weather emojis for 3 days in Celsius, starting with cloudy and rainy, then sunny, featuring the Danish flag for Copenhagen.
+Build a sleek Material Design calculator app with basic arithmetic operations, a clear display, and responsive button
