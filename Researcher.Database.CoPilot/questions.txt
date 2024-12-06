@@ -1,0 +1,8 @@
+Which dates do you have data from?
+Show me top 10 countries by usage?
+Show me top 5 countries by usage in Asia?
+Show me top 3 european countries by usage?
+Which 2 weekddays have the highest number of usage?
+Give me 3 countries that use it the lowest in the morning hours from 8 to 12?
+Give me 3 countries that use it the lowest in the morning hours from 8 to 12 in Asia?
+What is the peak day and hour on the day for highest usage?
