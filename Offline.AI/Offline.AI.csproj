@@ -10,10 +10,21 @@
 	  </NoWarn>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Waldo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Waldo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SemanticKernel" Version="1.31.0" />
 		<PackageReference Include="Microsoft.SemanticKernel.Connectors.HuggingFace" Version="1.31.0-preview" />
+		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.6" />
 	</ItemGroup>
 
 
