@@ -18,7 +18,7 @@ namespace Offline.AI
         {
             ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions,
             Temperature = 0.1f,
-            TopP = 0.1f,
+            TopP = 0.3f,
             MaxTokens = 4096
         };
 
@@ -31,30 +31,9 @@ namespace Offline.AI
             var chatService = kernel.GetRequiredService<IChatCompletionService>();
             var chatHistory = new ChatHistory();
 
-            // Load the image from the file system  
-            byte[] imageData;
-            string mimeType;
-
-            try
-            {
-                using (MemoryStream memoryStream = new MemoryStream())
-                {
-                    using (FileStream fileStream = new FileStream("Waldo.jpg", FileMode.Open, FileAccess.Read))
-                    {
-                        await fileStream.CopyToAsync(memoryStream);
-                    }
-                    // Detect image type  
-                    mimeType = GetMimeTypeFromStream(memoryStream);
-                    imageData = memoryStream.ToArray();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error reading image file: " + ex.Message);
-                return;
-            }
-
             // Create an ImageContent object  
+            string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Waldo.jpg");
+            var imageUri = new Uri(imagePath, UriKind.Absolute);
 
             while (true)
             {
@@ -64,7 +43,7 @@ namespace Offline.AI
 
                     // Add the image and question to the chat history  
                     chatHistory.AddUserMessage([
-                                                    new ImageContent(imageData.ToArray(), mimeType),
+                                                    new ImageContent(imageUri),
                                                     new TextContent(question)
                                                 ]);
 
