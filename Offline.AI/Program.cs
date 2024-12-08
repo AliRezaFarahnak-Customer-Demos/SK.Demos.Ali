@@ -2,7 +2,6 @@
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 
-
 namespace Offline.AI;
 // sudo docker run --runtime nvidia --gpus all --name Phi-3.5-vision-instruct -v ~/.cache/huggingface:/root/.cache/huggingface -p 8000:8000 --ipc=host vllm/vllm-openai:latest --model microsoft/Phi-3.5-vision-instruct --gpu_memory_utilization=0.99 --max_model_len=4000 --trust-remote-code 
 class Program
@@ -21,6 +20,8 @@ class Program
         kernel = Kernel.CreateBuilder()
                    .AddHuggingFaceChatCompletion("microsoft/Phi-3.5-vision-instruct", new Uri("http://localhost:8000"))
               .Build();
+
+        kernel.ImportPluginFromType<WorldWeatherPlugin>(); 
 
         var chatService = kernel.GetRequiredService<IChatCompletionService>();
 
