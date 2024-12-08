@@ -11,11 +11,55 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="cablebox.png" />
+    <None Remove="dog.jpg" />
+    <None Remove="dog2.jpg" />
+    <None Remove="Exam1.png" />
+    <None Remove="Exam2.png" />
+    <None Remove="Exam3.png" />
+    <None Remove="image.png" />
     <None Remove="Waldo.jpg" />
+    <None Remove="Waldo1.jpg" />
+    <None Remove="Waldo2.png" />
+    <None Remove="Waldo3.png" />
+    <None Remove="Waldo4.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="cablebox.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dog.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dog2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Exam1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Exam2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Exam3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="image.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Waldo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Waldo1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Waldo2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Waldo3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Waldo4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

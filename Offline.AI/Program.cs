@@ -6,7 +6,6 @@ using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using SixLabors.ImageSharp; // Make sure to add ImageSharp as a dependency  
 using SixLabors.ImageSharp.Formats;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Offline.AI
 {
@@ -31,9 +30,17 @@ namespace Offline.AI
             var chatService = kernel.GetRequiredService<IChatCompletionService>();
             var chatHistory = new ChatHistory();
 
-            // Create an ImageContent object  
-            string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Waldo.jpg");
-            var imageUri = new Uri(imagePath, UriKind.Absolute);
+            // Load the image into a byte array  
+            string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dog.jpg");
+            byte[] imageData;
+            string mimeType;
+
+            using (var imageStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+            {
+                mimeType = GetMimeTypeFromStream(imageStream);
+                imageData = new byte[imageStream.Length];
+                imageStream.Read(imageData, 0, imageData.Length);
+            }
 
             while (true)
             {
@@ -41,16 +48,14 @@ namespace Offline.AI
                 var question = Console.ReadLine();
                 if (string.IsNullOrEmpty(question)) break;
 
-                    // Add the image and question to the chat history  
-                    chatHistory.AddUserMessage([
-                                                    new ImageContent(imageUri),
-                                                    new TextContent(question)
-                                                ]);
-
-                    chatHistory.AddUserMessage(question);
+                // Add the image data and question to the chat history  
+                chatHistory.AddUserMessage([
+                
+                    new ImageContent(imageData, mimeType),
+                    new TextContent(question)
+                ]);
 
                 string completeResponse = string.Empty;
-
                 try
                 {
                     await foreach (var responsePart in chatService.GetStreamingChatMessageContentsAsync(chatHistory, ExecutionSettings, kernel))
