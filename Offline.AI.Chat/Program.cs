@@ -88,7 +88,14 @@ GitHub Advanced Security
         {
 
             ("\nYou: ").Write(ConsoleColor.White, false);
+
             var prompt = Console.ReadLine();
+
+            if(prompt.Contains("clear"))
+            {
+                Console.Clear();   
+                break;
+            }
 
             chatHistory.AddUserMessage(prompt);
 

@@ -11,20 +11,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="dog.jpg" />
     <None Remove="Exam1.png" />
     <None Remove="Exam2.png" />
     <None Remove="Exam3.png" />
-    <None Remove="something.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="dog.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="something.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
 
