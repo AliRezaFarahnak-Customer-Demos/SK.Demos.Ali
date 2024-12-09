@@ -17,8 +17,6 @@ class Program
 
         var chatService = kernel.GetRequiredService<IChatCompletionService>();
 
-
-
         var chatHistory = new ChatHistory($@"
 Answer as short as possible and only what the user asks for.
 Novo Developer Day (proposed agenda)
@@ -79,11 +77,10 @@ GitHub Advanced Security
         while (true)
         {
 
-            Console.Write("\nYou: ");
-            var question = Console.ReadLine();
-            if (string.IsNullOrEmpty(question)) break;
+            ("\nYou: ").Write(ConsoleColor.White, false);
+            var prompt = Console.ReadLine();
 
-            chatHistory.AddUserMessage(question);
+            chatHistory.AddUserMessage(prompt);
 
             string completeResponse = string.Empty;
 
@@ -96,13 +93,10 @@ GitHub Advanced Security
                     completeResponse += botResponsePart;
                 }
             }
-
             Console.WriteLine();
 
-            if (!string.IsNullOrEmpty(completeResponse))
-            {
-                chatHistory.AddAssistantMessage(completeResponse);
-            }
+            chatHistory.AddAssistantMessage(completeResponse);
+            
         }
     }
 }
