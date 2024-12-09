@@ -1,6 +1,8 @@
 ﻿using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
+using Microsoft.SemanticKernel.Connectors.OpenAI;
 using Utilities;
+
 // sudo docker run --runtime nvidia --gpus all --name Phi-3.5-vision-instruct -v ~/.cache/huggingface:/root/.cache/huggingface -p 8000:8000 --ipc=host vllm/vllm-openai:latest --model microsoft/Phi-3.5-vision-instruct --gpu_memory_utilization=0.99 --max_model_len=4000 --trust-remote-code
 
 namespace Offline.AI.Chat;
@@ -8,6 +10,15 @@ namespace Offline.AI.Chat;
 class Program
 {
     private static Kernel kernel;
+    private static OpenAIPromptExecutionSettings ExecutionSettings => new OpenAIPromptExecutionSettings
+    {
+        ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions,
+        ChatSystemPrompt = $"You are an AI",
+        Temperature = 0.1f,
+        TopP = 0.1f,
+        MaxTokens = 4096
+    };
+
     static async Task Main(string[] args)
     {
         kernel = Kernel.CreateBuilder()
@@ -71,7 +82,7 @@ GitHub Advanced Security
 ");
 
 
-        " AI on localHost:8000".Write(ConsoleColor.Yellow, true);
+        " Phi.3.5-vision on localHost:8000".Write(ConsoleColor.Yellow, true);
 
         while (true)
         {
@@ -83,7 +94,7 @@ GitHub Advanced Security
 
             string completeResponse = string.Empty;
 
-            await foreach (var responsePart in chatService.GetStreamingChatMessageContentsAsync(chatHistory))
+            await foreach (var responsePart in chatService.GetStreamingChatMessageContentsAsync(chatHistory, ExecutionSettings,kernel))
             {
                 var botResponsePart = responsePart?.Content;
                 if (botResponsePart != null)
@@ -95,7 +106,7 @@ GitHub Advanced Security
             Console.WriteLine();
 
             chatHistory.AddAssistantMessage(completeResponse);
-            
+
         }
     }
 }
