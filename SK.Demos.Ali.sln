@@ -30,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.WorldTime", "Labs\Lab.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{6769AF83-AF58-457B-AFEC-31C317A03B31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Offline.AI", "Offline.AI\Offline.AI.csproj", "{94D3B2FD-68B4-4C04-AA38-62DDA6366A4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Offline.AI.Chat", "Offline.AI\Offline.AI.Chat.csproj", "{94D3B2FD-68B4-4C04-AA38-62DDA6366A4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

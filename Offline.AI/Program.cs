@@ -4,7 +4,7 @@ using Utilities;
 // sudo docker run --runtime nvidia --gpus all --name Phi-3.5-vision-instruct -v ~/.cache/huggingface:/root/.cache/huggingface -p 8000:8000 --ipc=host vllm/vllm-openai:latest --model microsoft/Phi-3.5-vision-instruct --gpu_memory_utilization=0.99 --max_model_len=4000 --trust-remote-code
 // sudo docker run --runtime nvidia --gpus all --name Phi-3-vision-128k-instruct -v ~/.cache/huggingface:/root/.cache/huggingface -p 8000:8000 --ipc=host vllm/vllm-openai:latest --model microsoft/Phi-3-vision-128k-instruct --gpu_memory_utilization=0.99 --max_model_len=4000 --trust-remote-code
 
-namespace Offline.AI;
+namespace Offline.AI.Chat;
 
 class Program
 {
@@ -72,7 +72,7 @@ GitHub Advanced Security
 ");
 
 
-        "Welcome to AI on localHost!".Write(ConsoleColor.Yellow, true);
+        " AI on localHost:8000".Write(ConsoleColor.Yellow, true);
 
         while (true)
         {
