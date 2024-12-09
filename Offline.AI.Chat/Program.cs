@@ -28,9 +28,9 @@ Time	Plan	NOTE	Duration
 9 AM	Slides and demo sessions (3 Tracks, Level Beginner->Advanced)
 	Everyone attends every track. 45 minutes for 3 tracks 5-minute break between sessions.
 	2 hour 35 minutes
-	Track#1 Working with AI agents with SK
+	Track#1 Working with AI agents with Semantic Kernel
 Track#2 GH Copilot
-Track#3 GHAS		
+Track#3 GitHub Advanced Security		
 11:30 AM	Lunch + Coffee	-		60 minutes
 12:30 PM	Put your learnings to Test!	1.	Three separate tracks, participants decide which track they want to join. 
 2.	Participants take the demo code repositories/samples from speakers and try it themselves on a Sandbox GitHub Org (in Novo Nordisk Enterprise).
