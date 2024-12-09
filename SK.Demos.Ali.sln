@@ -30,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.WorldTime", "Labs\Lab.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{6769AF83-AF58-457B-AFEC-31C317A03B31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Offline.AI.Chat", "Offline.AI\Offline.AI.Chat.csproj", "{94D3B2FD-68B4-4C04-AA38-62DDA6366A4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Offline.AI.Chat", "Offline.AI.Chat\Offline.AI.Chat.csproj", "{F187E68C-A3F9-4882-948B-20E330F9613E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,10 +78,10 @@ Global
 		{6769AF83-AF58-457B-AFEC-31C317A03B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6769AF83-AF58-457B-AFEC-31C317A03B31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6769AF83-AF58-457B-AFEC-31C317A03B31}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94D3B2FD-68B4-4C04-AA38-62DDA6366A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94D3B2FD-68B4-4C04-AA38-62DDA6366A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94D3B2FD-68B4-4C04-AA38-62DDA6366A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94D3B2FD-68B4-4C04-AA38-62DDA6366A4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F187E68C-A3F9-4882-948B-20E330F9613E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F187E68C-A3F9-4882-948B-20E330F9613E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F187E68C-A3F9-4882-948B-20E330F9613E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F187E68C-A3F9-4882-948B-20E330F9613E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
