@@ -12,8 +12,8 @@ class Program
     static async Task Main(string[] args)
     {
         kernel = Kernel.CreateBuilder()
-                      .AddHuggingFaceChatCompletion("microsoft/Phi-3.5-vision-instruct", new Uri("http://localhost:8000"))
-                      .Build();
+                       .AddHuggingFaceChatCompletion("microsoft/Phi-3.5-vision-instruct", new Uri("http://localhost:8000"))
+                       .Build();
 
         var chatService = kernel.GetRequiredService<IChatCompletionService>();
 
