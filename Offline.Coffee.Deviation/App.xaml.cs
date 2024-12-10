@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace WebcamDemo
+namespace Offline.Coffee.Devication
 {
     /// <summary>
     /// Interaction logic for App.xaml
