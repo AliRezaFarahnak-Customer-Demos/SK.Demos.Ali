@@ -9,5 +9,12 @@
                         HorizontalAlignment="Stretch"  
                         VerticalAlignment="Stretch"  
                         PaintSurface="UpdateWebcamFrame" />
+        <TextBlock x:Name="DetectionMessage"  
+                   HorizontalAlignment="Center"  
+                   VerticalAlignment="Top"  
+                   Foreground="White" 
+                   Background="Red"
+                   FontSize="150"  
+                   Visibility="Collapsed" />
     </Grid>
 </Window>  

@@ -10,10 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="deviation.wav" />
     <None Remove="yolov11s.onnx" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="deviation.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="yolov11s.onnx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

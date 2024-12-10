@@ -4,6 +4,7 @@ using Emgu.CV.Util;
 using SkiaSharp;
 using SkiaSharp.Views.Desktop;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Threading;
 using YoloDotNet;
 using YoloDotNet.Enums;
@@ -84,6 +85,16 @@ public partial class MainWindow : Window
 
             // Run inference on frame  
             var results = _yolo.RunObjectDetection(_currentFrame);
+
+            // Check if a cup is detected  
+            bool cupDetected = results.Any(result => result.Label.Name == "cup");
+
+            // Update the TextBlock based on detection  
+            _dispatcher.Invoke(() =>
+            {
+                DetectionMessage.Visibility = cupDetected ? Visibility.Visible : Visibility.Collapsed;
+                DetectionMessage.Text = cupDetected ? "Deviation Detected!" : string.Empty;
+            });
 
             // Draw results  
             _currentFrame = _currentFrame.Draw(results);
