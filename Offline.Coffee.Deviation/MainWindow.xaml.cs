@@ -3,6 +3,7 @@ using Emgu.CV.CvEnum;
 using Emgu.CV.Util;
 using SkiaSharp;
 using SkiaSharp.Views.Desktop;
+using System.Media;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -21,6 +22,7 @@ public partial class MainWindow : Window
     private readonly Dispatcher _dispatcher;
     private VideoCapture _capture;
     private DispatcherTimer _timer;
+    private bool _isPlaying;
     #endregion
 
     #region Constants  
@@ -90,10 +92,24 @@ public partial class MainWindow : Window
             bool cupDetected = results.Any(result => result.Label.Name == "cup");
 
             // Update the TextBlock based on detection  
-            _dispatcher.Invoke(() =>
+            _dispatcher.Invoke(async () =>
             {
                 DetectionMessage.Visibility = cupDetected ? Visibility.Visible : Visibility.Collapsed;
                 DetectionMessage.Text = cupDetected ? "Deviation Detected!" : string.Empty;
+
+                if (_isPlaying)
+                    return;
+
+                if (!cupDetected)
+                    return;
+
+                _isPlaying = true;
+                var _soundPlayer = new SoundPlayer("deviation.wav");
+                _soundPlayer.Play();
+                _soundPlayer.Dispose();
+                _soundPlayer = null;
+                await Task.Delay(3500);
+                _isPlaying = false;
             });
 
             // Draw results  
