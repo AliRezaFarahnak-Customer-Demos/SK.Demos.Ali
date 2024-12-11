@@ -40,16 +40,16 @@ The purpose of this lab is to gain hands-on experience in developing plugins for
   
 ## API Key  
 - You will need an API key to access the aviation data. Use the following URL format for the AviationPlugin: `https://aviation-edge.com/v2/public/timetable?key=YOUR_API_KEY&iataCode=cph&type=arrival`. Replace `YOUR_API_KEY` with your actual API key.  
-  
+- This is an example how you can call the api with the key https://aviation-edge.com/v2/public/timetable?key=79a407-f81a02&iataCode=cph&type=arrival
+ 
 ## Expected Output  
 The console application should display AI responses that explain the current time and year for a given location and provide detailed flight information for specified queries.  
   
 ## Completion Criteria  
 To complete the lab, the AI should be able to answer thse:  
 - What is the current time in CPH?
-- Is the flight from New York delayed arriving to CPH today?
-- Which 4 airlines have flights arriving at CPH around 7 AM today?
-- What is the status of the next 3 flights arriving at CPH?
-- What are the first 2 flights arriving at CPH from European cities today?
+- What is the current time in Dubai?
+
+For aviation it should be able to tell the correct time for arrival and departure from this website for Dubau arrivals: https://dubai-dxb-airport.com/flights/arrivals/
   
 By following these steps, you will create a robust AI application capable of providing both world time and aviation information to users.  
