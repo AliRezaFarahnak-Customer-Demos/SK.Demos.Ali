@@ -44,7 +44,7 @@ class Program
             _kernel.ImportPluginFromType<WorldWeatherPlugin>();
             _kernel.ImportPluginFromType<ImagePlugin>();
             _kernel.ImportPluginFromType<CurrencyConverterPlugin>();
-        //    _kernel.ImportPluginFromType<AviationPlugin>();
+           // _kernel.ImportPluginFromType<AviationPlugin>();
 
             _session = new ChatHistory();
 
@@ -75,7 +75,7 @@ class Program
                     completeResponse += content.Content;
                 }
                 _session.AddAssistantMessage(completeResponse);
-                _session.ScopeSession(true);
+                _session.ScopeSession(true,10);
                 Console.WriteLine();
             }
 
