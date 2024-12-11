@@ -17,7 +17,7 @@ class Program
     private static OpenAIPromptExecutionSettings _executionSettings => new OpenAIPromptExecutionSettings
     {
         ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions,
-        ChatSystemPrompt = $"You are an AI",
+        ChatSystemPrompt = @$"You are an AI and current time is: {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")}",
         Temperature = 0.1f,
         TopP = 0.1f,
         MaxTokens = 4096
@@ -42,9 +42,9 @@ class Program
             _kernel = builder.Build();
             _kernel.ImportPluginFromType<WorldTimePlugin>();
             _kernel.ImportPluginFromType<WorldWeatherPlugin>();
-            _kernel.ImportPluginFromType<OpenSkyPlugin>();
             _kernel.ImportPluginFromType<ImagePlugin>();
             _kernel.ImportPluginFromType<CurrencyConverterPlugin>();
+        //    _kernel.ImportPluginFromType<AviationPlugin>();
 
             _session = new ChatHistory();
 

@@ -26,7 +26,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Covid19", "Labs\Lab.Cov
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.WhereIsWaldo", "Labs\Lab.WhereIsWaldo\Lab.WhereIsWaldo.csproj", "{7736C581-049D-417B-B46F-DAF532D0FEB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.WorldTime", "Labs\Lab.WorldTime\Lab.WorldTime.csproj", "{0BE35120-3EE9-43CE-82EE-3F7E85605A2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.WorldTimeAndAviation", "Labs\Lab.WorldTime\Lab.WorldTimeAndAviation.csproj", "{0BE35120-3EE9-43CE-82EE-3F7E85605A2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{6769AF83-AF58-457B-AFEC-31C317A03B31}"
 EndProject

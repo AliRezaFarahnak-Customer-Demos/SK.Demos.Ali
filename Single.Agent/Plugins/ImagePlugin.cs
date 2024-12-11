@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace Single.Agent.Plugins;
 
-public class ImagePlugin : BasePlugin
+public class ImagePlugin
 {
     private readonly ImageClient _client;
 
@@ -21,6 +21,7 @@ public class ImagePlugin : BasePlugin
     public async Task<string> GenerateImageAsync(
         [Description("Description of the image to generate.")] string description)
     {
+        var httpClient = new HttpClient();  
         var imageResult = await _client.GenerateImageAsync(description, new()
         {
             Quality = GeneratedImageQuality.Standard,
