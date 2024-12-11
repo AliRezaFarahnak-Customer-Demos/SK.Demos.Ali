@@ -45,19 +45,11 @@ The purpose of this lab is to gain hands-on experience in developing plugins for
 The console application should display AI responses that explain the current time and year for a given location and provide detailed flight information for specified queries.  
   
 ## Completion Criteria  
-To complete the lab, the AI should be able to:  
-- Provide the current time in any city worldwide, such as Tokyo, New York, Copenhagen, Riyadh, etc.  
-- Answer aviation-related queries, such as:  
-  - What is the current time?  
-  - What are the 5 latest flight arrivals at Copenhagen Airport (CPH) today?  
-  - Can you show me the 2 flights that have been delayed but have arrived at CPH?  
-  - Which 4 airlines have flights arriving at CPH this morning?  
-  - What is the status of the next 3 flights arriving at CPH?  
-  - Are there any 6 flights arriving at CPH from New York today?  
-  - Can you list the 3 flights arriving at CPH with their scheduled and actual arrival times?  
-  - What are the first 2 flights arriving at CPH from European cities today?  
-  - How many flights are scheduled to arrive at CPH in the next 4 hours?  
-  - Can you provide the arrival details for 5 flights coming from London to CPH?  
-  - Are there any 3 flights arriving at CPH that have been canceled today?  
+To complete the lab, the AI should be able to answer thse:  
+- What is the current time in CPH?
+- Is the flight from New York delayed arriving to CPH today?
+- Which 4 airlines have flights arriving at CPH around 7 AM today?
+- What is the status of the next 3 flights arriving at CPH?
+- What are the first 2 flights arriving at CPH from European cities today?
   
 By following these steps, you will create a robust AI application capable of providing both world time and aviation information to users.  

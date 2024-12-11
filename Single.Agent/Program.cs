@@ -17,7 +17,7 @@ class Program
     private static OpenAIPromptExecutionSettings _executionSettings => new OpenAIPromptExecutionSettings
     {
         ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions,
-        ChatSystemPrompt = @$"You are an AI and current time is: {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")}",
+        ChatSystemPrompt = @$"You are an AI and current time is: {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")} UTC",
         Temperature = 0.1f,
         TopP = 0.1f,
         MaxTokens = 4096
