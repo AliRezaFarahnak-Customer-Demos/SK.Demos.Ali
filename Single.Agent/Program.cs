@@ -7,7 +7,6 @@ using Single.Agent.Plugins;
 
 namespace SingleAgent;
 
-#pragma warning disable SKEXP0110, SKEXP0001, SKEXP0101
 
 class Program
 {
@@ -18,8 +17,8 @@ class Program
     {
         ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions,
         ChatSystemPrompt = @$"You are an AI and current time is: {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")} UTC",
-        Temperature = 0.1f,
-        TopP = 0.1f,
+        Temperature = 0.2f,
+        TopP = 0.2f,
         MaxTokens = 4096
     };
 
@@ -34,17 +33,14 @@ class Program
                                                               Constants.Endpoint,
                                                               Constants.ApiKey);
 
-#pragma warning disable SKEXP0001
             builder.Services.AddSingleton<IAutoFunctionInvocationFilter, InvocationFilter>();
-#pragma warning restore SKEXP0001
-
 
             _kernel = builder.Build();
             _kernel.ImportPluginFromType<WorldTimePlugin>();
             _kernel.ImportPluginFromType<WorldWeatherPlugin>();
             _kernel.ImportPluginFromType<ImagePlugin>();
             _kernel.ImportPluginFromType<CurrencyConverterPlugin>();
-           // _kernel.ImportPluginFromType<AviationPlugin>();
+            _kernel.ImportPluginFromType<AviationPlugin>();
 
             _session = new ChatHistory();
 
