@@ -53,3 +53,8 @@ To complete the lab, the AI should be able to answer thse:
 For aviation it should be able to tell the correct time for arrival and departure from this website for Dubau arrivals: https://dubai-dxb-airport.com/flights/arrivals/
   
 By following these steps, you will create a robust AI application capable of providing both world time and aviation information to users.  
+
+arrivals for CPH:
+https://aviation-edge.com/v2/public/timetable?key=79a407-f81a02&iataCode=cph&type=arrival
+departures for CPH:
+https://aviation-edge.com/v2/public/timetable?key=79a407-f81a02&iataCode=CPH&type=departure
